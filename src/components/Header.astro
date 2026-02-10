@@ -7,9 +7,10 @@ import Icon from "./Icon.astro";
 <header class="header">
   <div class="icon">
     <Icon 
-      size="32px" 
+      size="30px" 
       name="icono"
-    />Personal
+    />
+    <span>Personal</span>
   </div>
 
   <nav class="nav-links">
@@ -52,7 +53,11 @@ import Icon from "./Icon.astro";
   .icon {
     display: flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: var(--space-2);
+    /* background-color: var(--color-error); */
+    span {
+      font-weight: var(--font-semibold);
+    }
   }
   .button-cta {
     display: none;
