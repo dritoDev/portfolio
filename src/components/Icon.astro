@@ -11,6 +11,10 @@ import next from "./icons/next.svg?raw";
 import js from "./icons/js.svg?raw";
 import node from "./icons/node.svg?raw";
 import ts from "./icons/ts.svg?raw";
+import readmore from "./icons/readmore.svg?raw";
+import flecha from "./icons/flecha.svg?raw";
+import more from "./icons/more.svg?raw";
+import close from "./icons/close.svg?raw";
 
 const icons = {
   icono: AR,
@@ -25,9 +29,13 @@ const icons = {
   js,
   node,
   ts,
+  readmore,
+  flecha,
+  close,
+  more,
 };
 
-const { name, size = "24px", color = "currentColor" } = Astro.props;
+const { href, name, size = "1rem", color = "currentColor" } = Astro.props;
 
 const svg = icons[name];
 ---

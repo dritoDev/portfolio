@@ -4,8 +4,6 @@
   --primary: #38bdf8;
   --secondary: #22c55e;
 
-  
-
   /* ROOT TOKENS */
   /* COLORS (Primitive) */
 
@@ -26,7 +24,6 @@
   --color-warning: #d97706;
   --color-error: #dc2626;
 
-
   /* SPACING (4px scale) */
 
   --space-0: 0rem;
@@ -40,7 +37,6 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
-
 
   /* TYPOGRAPHY SCALE */
 
@@ -61,6 +57,9 @@
   --text-3xl: 2rem;
   /* 32px */
 
+  /* DISPLAY */
+  --display-grid: grid;
+  --display-flex: flex;
 
   /* FONT WEIGHT */
 
@@ -69,7 +68,6 @@
   --font-semibold: 600;
   --font-bold: 700;
   --font-bold-l: 800;
-
 
   /* RADIUS */
 
@@ -88,6 +86,7 @@
 
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
+  --transition-midle: 300ms ease;
   --transition-slow: 400ms ease;
 
   /* BREAKPOINTS */
@@ -102,7 +101,6 @@
   /* 1200px */
   --bp-2xl: 90rem;
   /* 1440px */
-
 
   /* CONTAINER MAX WIDTH */
   --max-width-900:900px;
@@ -126,21 +124,20 @@
   box-sizing: border-box;
 }
 
-.display-flex {
-  display: flex;
+.display{
+  display: var(--display-flex);
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--color-white);
 }
 
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-family-base);
   background: var(--color-black);
   color: var(--color-white);
   line-height: 1.6;
@@ -170,53 +167,4 @@ body {
 body.menu-open {
   overflow: hidden;
   height: 100vh;
-}
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 80;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 80%;
-  max-width: 320px;
-  height: 100vh;
-  background: #0f172a;
-  z-index: 90;
-
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-}
-
-.mobile-menu.active {
-  transform: translateX(0);
-}
-
-.mobile-menu .nav-links {
-  list-style: none;
-  padding: 4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.mobile-menu a {
-  font-size: 1.5rem;
-  color: white;
-  text-decoration: none;
 }

@@ -1,22 +1,119 @@
 ---
+import "../styles/global.css";
+import Icon from "./Icon.astro";
 const links = [
-  { href: "#about", label: "Sobre mí" },
+  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Proyectos" },
-  { href: "#contact", label: "Contacto" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
 ];
 ---
 
 <div id="menu-overlay" class="menu-overlay"></div>
 
 <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <a href="#home" class="icono-overlay">
+    <Icon name="icono" size="2rem" color="white"/>
+  </a>
+  <h3>Menu</h3>
   <ul class="nav-links">
-    {links.map((link) => (
-      <li>
-        <a href={link.href}>{link.label}</a>
-      </li>
-    ))}
+    {
+      links.map((link) => (
+        <li>
+          <div>
+            <a class="link" href={link.href}>{link.label}</a>
+          </div>
+          <div>
+            <a class="link" href={link.href}>
+              <Icon name="flecha" size="1.5rem" />
+            </a>
+          </div> 
+        </li>
+      ))
+    }
   </ul>
 </nav>
+
+<style>
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: #0f172a;
+    z-index: 90;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    .icono-overlay {
+      padding: var(--space-8) var(--space-8);
+      display: var(--display-flex);
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: var(--color-gray-600) solid 1px;
+    }
+  }
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--color-white);
+    padding: 2rem var(--space-8);
+  }
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 80;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+
+  .mobile-menu .nav-links {
+    list-style: none;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    
+  }
+  .nav-links li {
+    display: var(--display-flex);
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--container-ms);
+  }
+
+  .mobile-menu .link {
+    display: flex;
+    padding: var(--space-1) var(--space-0);
+    font-size: var(--text-sm);
+    color: var(--color-white);
+    text-decoration: none;
+    align-items: center;
+    text-shadow: var(--text-shadow-ms);
+    transition: all var(--transition-base);
+    &:hover {
+      color: var( --color-primary-400);
+      text-shadow: var(--text-shadow-lg);
+    }
+  }
+</style>
 
 <script is:inline>
   const toggle = document.querySelector(".nav-toggle");
@@ -30,11 +127,10 @@ const links = [
 
   function setFocusTrap() {
     focusableElements = menu.querySelectorAll(
-      'a, button, [tabindex]:not([tabindex="-1"])'
+      'a, button, [tabindex]:not([tabindex="-1"])',
     );
     firstFocusableElement = focusableElements[0];
-    lastFocusableElement =
-      focusableElements[focusableElements.length - 1];
+    lastFocusableElement = focusableElements[focusableElements.length - 1];
     firstFocusableElement.focus();
   }
 
@@ -44,10 +140,7 @@ const links = [
     if (e.shiftKey && document.activeElement === firstFocusableElement) {
       e.preventDefault();
       lastFocusableElement.focus();
-    } else if (
-      !e.shiftKey &&
-      document.activeElement === lastFocusableElement
-    ) {
+    } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
       e.preventDefault();
       firstFocusableElement.focus();
     }
