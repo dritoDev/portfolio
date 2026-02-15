@@ -2,32 +2,35 @@
 import "../styles/global.css";
 import Icon from "./Icon.astro";
 ---
+
 <!-- HERO -->
 <section id="home" class="hero">
-  <Icon name="hero" size="360px" />
+  <div class="hero-image">
+    <Icon name="hero" size="300px" />
+  </div>
   <div class="hero-content">
-    <h1>
-      Hello, I`am <span class="">Pedro Rosa</span><br /> Frontend <strong
+    <h1 class="hero-title">
+      Hello, I`am <span>Pedro Rosa</span><br /> Frontend <strong
         class="outlined">Developer</strong
       ><br />
       Based in <strong>Rep. Dominican</strong>
     </h1>
-    <p>
+    <p class="description">
       Desarrollo interfaces web modernas, accesibles y responsivas usando HTML,
       CSS y JavaScript.
     </p>
     <div class="hero__social">
       <a href="#" class="social-link" aria-label="Facebook">
-        <Icon name="facebook" size="36px"/>
+        <Icon name="facebook" size="36px" />
       </a>
       <a href="#" class="social-link" aria-label="Reddit">
-        <Icon name="reddit" size="36px"/>
+        <Icon name="reddit" size="36px" />
       </a>
       <a href="#" class="social-link" aria-label="Twitter">
-        <Icon name="twitter" size="36px"/>
+        <Icon name="twitter" size="36px" />
       </a>
       <a href="#" class="social-link" aria-label="Discord">
-        <Icon name="discord" size="36px"/>
+        <Icon name="discord" size="36px" />
       </a>
     </div>
   </div>
@@ -35,59 +38,64 @@ import Icon from "./Icon.astro";
 
 <style>
   .hero {
-    display: flex;
+    display: var(--display-flex);
     width: 100%;
+    margin: 0 auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4rem 0;
+    gap: 3rem;
     padding: var(--space-8) var(--space-4);
   }
-  .icon-content {
-    width: 100%;
+  .hero-title {
+    font-size: clamp(1.5rem, 5vw, 1.961rem);
+    font-weight: var(--font-regular);
   }
   .hero-content {
-    display: flex;
+    display: var(--display-flex);
     flex-direction: column;
+    justify-content: center;
     gap: var(--space-8);
-
   }
-  section h1 span {
+  .hero-title > span {
     color: var(--color-primary-400);
     font-weight: var(--font-bold-l);
     text-shadow: var(--shadow-lg);
   }
-  h1 {
-    font-size: clamp(var(--space-6), 5vw, var(--space-8));
-    font-weight: var(--font-regula);
-  }
+
   strong {
     font-weight: var(--font-bold-l);
   }
-  p {
+  .description {
     font-size: var(--text-base);
     font-weight: var(--font-regular);
     line-height: 1.5;
   }
-  @media (min-width: 768px) {
+  .hero__social {
+    display: var(--display-flex);
+    align-items: center;
+    gap: var(--space-10);
+  }
+  .social-link {
+    display: var(--display-flex);
+    align-items: center;
+    justify-content: center;
+  }
+  @media (min-width: 48rem) {
     .hero {
       flex-direction: row-reverse;
       height: auto;
+      gap: 2rem;
+      padding: var(--space-10) var(--space-4);
     }
     .hero-content {
       max-width: 50%;
+      height: auto;
     }
   }
-  .hero__social {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: var(--space-4);
-    width: auto; 
-  }
-  .social-link {
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-3);
+  @media (min-width: 64rem){
+    .hero {
+      max-width: var(--max-width-900);
+    }
   }
 </style>

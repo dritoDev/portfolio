@@ -4,8 +4,7 @@
   --primary: #38bdf8;
   --secondary: #22c55e;
 
-  /* ROOT TOKENS */
-  /* COLORS (Primitive) */
+  /* ROOT TOKENS  COLORS (Primitive) */
 
   --color-white: #ffffff;
   --color-black: #000000;
@@ -103,7 +102,9 @@
   /* 1440px */
 
   /* CONTAINER MAX WIDTH */
-  --max-width-900:900px;
+
+
+  --max-width-900:56.25rem;
 
   --container-sm: 100%;
   
